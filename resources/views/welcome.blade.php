@@ -1,37 +1,29 @@
  @extends('layouts.main')
  @section('title', 'HDC Events')
  @section('content')
-     <h1>Algum título</h1>
-     <img src="/img/primeiraImagem.jpeg" alt="Banner">
-     @if (10 > 5)
-         <p>A condição é true</p>
-     @endif
 
-     @if ($nome == 'Maria')
-         <p>O nome é Maria</p>
-     @elseif ($nome == 'Leuza')
-         <p> O nome é {{ $nome }} e ela tem {{ $idade }} anos e {{ $altura }} de altura.</p>
-     @else
-         <p>O nome não é Maria</p>
-     @endif
+     <div class="container d-flex col-md-12">
+         @foreach ($events as $event)
+             <div class="card p-2 m-2" style="width: 18rem;">
+                 <img class="card-img-top" src="{{ url('img/event.jpg') }}" alt="Imagem de capa do card">
+                 <div class="card-body">
+                     <h5 class="card-title">{{ $event->title }}</h5>
+                     <p class="card-text">{{ $event->description }}</p>
+                     <p class="card-text">{{ $event->city }}</p>
+                     @if ($event->private == 0)
+                     <p class="card-text">Público</p>
+                     @else
+                     <p class="card-text">Privado</p>
+                     @endif
+                     <a href="#" class="btn btn-primary">Visitar</a>
+                 </div>
+             </div>
+         @endforeach
+     </div>
 
-     @for ($i = 0; $i < count($arr); $i++)
-         <p>{{ $arr[$i] }} - {{ $i }}</p>
 
-         @if ($i == 2)
-             <p>O i é 2</p>
-         @endif
-     @endfor
 
-     @foreach ($nomes as $nomes)
-         <p>{{ $loop->index }}</p>
-         <p>{{ $nomes }}</p>
-     @endforeach
-
-     @php
-         $name = 'Leuza';
-         echo $name;
-     @endphp
+     {{-- gtygujgyg --}}
      <!--Comentário html-->
      {{-- Comentário do Blade --}}
 
